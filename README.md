@@ -1,5 +1,5 @@
 # CocoFriends
-// 이미지 첨부
+* 이미지 첨부
 애완동물 SNS 서비스
 
 ## description
