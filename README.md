@@ -18,9 +18,9 @@
 
 ## Front End 
 - React
-- Redux-thunk
-- React-Router
 - Hooks
+- React-router
+- Redux, Redux-thunk
 - Axios
 
 ## Back End 
