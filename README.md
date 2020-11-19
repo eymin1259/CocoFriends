@@ -16,14 +16,14 @@
 - 실시간 채팅
 
 
-## Front End Tech Stack
+## Front End 
 - React
 - Redux-thunk
 - React-Router
 - Hooks
 - Axios
 
-## Back End Tech Stack
+## Back End 
 - Node.js
 - Express
 - Mongoose, MongoDB
