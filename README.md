@@ -1,4 +1,5 @@
 # CocoFriends
+* 이미지 첨부
 애완동물 SNS 서비스
 
 ## description
@@ -15,14 +16,14 @@
 - 실시간 채팅
 
 
-## Front End Tech Stack
+## Front End 
 - React
-- Redux-thunk
-- React-Router
 - Hooks
+- React-router
+- Redux, Redux-thunk
 - Axios
 
-## Back End Tech Stack
+## Back End 
 - Node.js
 - Express
 - Mongoose, MongoDB
