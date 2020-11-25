@@ -10,7 +10,7 @@ const StyledRequestMoreDataBar = styled.div`
   text-align: center;
   color: white;
   font-weight: bold;
-
+  margin-bottom: 20px;
   &:hover {
     background-color: #00a1ff;
   }

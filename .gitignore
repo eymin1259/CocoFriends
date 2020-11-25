@@ -1,3 +1,7 @@
+coco-friends-backend/.env
+coco-friends-backend/dataInsert.js
+coco-friends-backend/dataMake.js
+
 # Logs
 logs
 *.log

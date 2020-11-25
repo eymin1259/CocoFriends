@@ -5,11 +5,11 @@ import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
 import ProfilePage from './pages/ProfilePage';
-
+import AuthRoute from './router/AuthRoute';
 function App() {
   return (
     <>
-      <Route path={['/', '/login']} exact={true} component={LoginPage} />
+      <AuthRoute path={['/', '/login']} exact={true} component={LoginPage} />
       <Route path="/main" exact={true} component={MainPage} />
       <Route path="/search" exact={true} component={SearchPage} />
       <Route path="/chat" exact={true} component={ChatPage} />

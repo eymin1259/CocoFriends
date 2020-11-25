@@ -18,8 +18,12 @@ const StyledInput = styled.input`
   width: 350px;
   height: 40px;
   margin-top: 15px;
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 1.3rem;
   border: 2px solid #7acbf9;
   border-radius: 10px;
+
   &:focus {
     outline: none;
     border: 3px solid #00a1ff;
@@ -49,14 +53,14 @@ const StyledBtn = styled.button`
   }
 `;
 
-const LoginForm = () => {
+const LoginForm = ({ handleId, handlePw, handleSubmit }) => {
   return (
     <StyledLoginForm>
       <h1 style={{ color: '#00a1ff' }}>COCO FRIENDS</h1>
       <LoginImg src="https://image2.lotteimall.com/goods/17/10/53/1393531017_L.jpg" />
-      <StyledInput />
-      <StyledInput />
-      <StyledBtn>로그인하기</StyledBtn>
+      <StyledInput onChange={(e) => handleId(e)} />
+      <StyledInput type="password" onChange={(e) => handlePw(e)} />
+      <StyledBtn onClick={handleSubmit}>로그인하기</StyledBtn>
     </StyledLoginForm>
   );
 };

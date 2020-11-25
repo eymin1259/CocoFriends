@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainTemplete from '../../components/main/MainTemplete';
+import { getMainPosts } from '../../lib/api';
 
 const mock = [
   {
@@ -29,7 +30,15 @@ const mock = [
   },
 ];
 const MainContainer = () => {
-  return <MainTemplete posts={mock} />;
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    getMainPosts().then((res) => {
+      setPosts(res.data.mainPosts);
+    });
+  }, []);
+
+  return <MainTemplete posts={posts} />;
 };
 
 export default MainContainer;
