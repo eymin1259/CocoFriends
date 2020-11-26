@@ -23,7 +23,9 @@ const post = async (req, res, next) => {
         }
       );
 
-      res.status(201).json({ token: token, photo: userInDb.photo });
+      res
+        .status(201)
+        .json({ token: token, photo: userInDb.photo, id: userInDb.id });
     }
   } catch (err) {
     next(err);

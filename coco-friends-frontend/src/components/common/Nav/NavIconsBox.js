@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   AiOutlineHome,
   AiOutlineSearch,
   AiOutlineMessage,
 } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const StyledNavIconsBox = styled.div`
   width: 33%;
@@ -17,7 +18,13 @@ const StyledNavIconsBox = styled.div`
 const ProfileIcon = styled.div`
   width: 30px;
   height: 30px;
-  background-image: url('https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=eJfynleCkQkAX9d9_kH&oh=220016408e562b842d95bbddebf32364&oe=5FE54B0F&ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2');
+  border-radius: 50%;
+  border: 1px solid #08a0fb;
+  ${(props) =>
+    props.photo &&
+    css`
+      background-image: url(${props.photo});
+    `}
   background-size: cover;
 `;
 
@@ -37,7 +44,8 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const NavIconsBox = () => {
+const NavIconsBox = ({ photo, goToMyPage }) => {
+  const userId = useSelector((state) => state.auth.authId);
   return (
     <StyledNavIconsBox>
       <StyledLink to="/main">
@@ -49,8 +57,8 @@ const NavIconsBox = () => {
       <StyledLink to="/chat">
         <AiOutlineMessage style={{ width: 30, height: 30 }} />
       </StyledLink>
-      <StyledLink to="/profile/777">
-        <ProfileIcon />
+      <StyledLink to={`/profile/${userId}`}>
+        <ProfileIcon photo={photo} onClick={goToMyPage} />
       </StyledLink>
     </StyledNavIconsBox>
   );

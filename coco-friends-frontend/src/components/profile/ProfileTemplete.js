@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ProfileBox from './ProfileBox';
 import PostBoxTemplete from '../common/post/PostBoxTemplete';
 import PostCard from '../common/post/PostCard';
-import RequestMoreDataBar from '../common/RequestMoreDataBar';
 
 const StyledProfileTemplete = styled.div`
   min-height: 100vh;
@@ -22,7 +21,6 @@ const ProfileTemplete = ({ posts, profile }) => {
         {posts.map((post, idx) => (
           <PostCard key={idx} data={post} />
         ))}
-        <RequestMoreDataBar />
       </PostBoxTemplete>
     </StyledProfileTemplete>
   );

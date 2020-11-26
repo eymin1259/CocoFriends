@@ -17,9 +17,9 @@ const StyledRequestMoreDataBar = styled.div`
   cursor: pointer;
 `;
 
-const RequestMoreDataBar = () => {
+const RequestMoreDataBar = ({ handleBtn }) => {
   return (
-    <StyledRequestMoreDataBar>
+    <StyledRequestMoreDataBar onClick={handleBtn}>
       <p>더보기</p>
     </StyledRequestMoreDataBar>
   );

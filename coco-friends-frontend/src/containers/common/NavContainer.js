@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Nav from '../../components/common/Nav/Nav';
 
 const NavContainer = () => {
-  return <Nav />;
+  const photo = useSelector((state) => state.auth.authPhoto);
+
+  return <Nav photo={photo} />;
 };
 
-export default NavContainer;
+export default React.memo(NavContainer);

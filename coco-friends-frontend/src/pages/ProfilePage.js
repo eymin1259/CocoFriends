@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavContainer from '../containers/common/NavContainer';
 import ProfileContainer from '../containers/profile/ProfileContainer';
 
-const ProfilePage = () => {
+const ProfilePage = ({ match }) => {
+  const userId = match.params.profilId;
   return (
     <>
       <NavContainer />
-      <ProfileContainer />
+      <ProfileContainer userId={userId} />
     </>
   );
 };

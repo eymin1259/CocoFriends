@@ -24,8 +24,8 @@ const SelectSearch = ({ category, options }) => {
   return (
     <StyledSelectSearch>
       <p>{category}</p>
-      <select>
-        <option value="" selected disabled hidden />
+      <select defaultValue="">
+        <option value="" disabled hidden />
         {options.map((option, idx) => (
           <option key={idx}>{option}</option>
         ))}

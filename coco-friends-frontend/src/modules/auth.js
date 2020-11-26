@@ -10,7 +10,6 @@ const GET_LOGGEDIN_USERINFO_FAIL = 'auth/GET_LOGGEDIN_USERINFO_FAIL';
 export const login = (id, pw) => async (dispatch) => {
   try {
     const res = await api.login({ id, pw });
-
     // 로그인성공
     document.cookie = `token=${res.data.token}`; // 엑세스 토큰 쿠키에저장
     dispatch({
@@ -28,6 +27,7 @@ export const login = (id, pw) => async (dispatch) => {
 };
 
 const initState = {
+  authId: null,
   authPhoto: null,
   authError: false,
 };
@@ -37,6 +37,7 @@ function auth(state = initState, action) {
     case GET_LOGGEDIN_USERINFO_SUCCESS:
       return {
         authError: false,
+        authId: action.payload.id,
         authPhoto: action.payload.photo,
       };
     case GET_LOGGEDIN_USERINFO_FAIL:

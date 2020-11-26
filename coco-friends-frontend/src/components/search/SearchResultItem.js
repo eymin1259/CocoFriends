@@ -37,7 +37,7 @@ const StlyedImg = styled.img`
 const SearchResultItem = ({ result }) => {
   const { name, profileImg, sex, age, city, disctrict, userId } = result;
   return (
-    <StyledLink to={`/profile/${userId}`}>
+    <StyledLink to={`/profile/${98}`}>
       <StyledSearchResultItem>
         <StlyedImg imgSrc={profileImg} />
         <p>

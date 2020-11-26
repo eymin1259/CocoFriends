@@ -5,6 +5,6 @@ const userPosts = require("../controllers/userPosts");
 const router = express.Router();
 
 router.get("/all", mainPosts.get);
-router.get("/:userid", userPosts.get);
+router.get("/ofUser", userPosts.get);
 
 module.exports = router;

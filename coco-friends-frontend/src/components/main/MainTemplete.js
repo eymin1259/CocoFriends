@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PostBoxTemplete from '../common/post/PostBoxTemplete';
 import PostCard from '../common/post/PostCard';
@@ -12,14 +13,16 @@ const StyledMainTemplete = styled.div`
   background-color: #fafafa;
 `;
 
-const MainTemplete = ({ posts }) => {
+const MainTemplete = ({ posts, handleBtn }) => {
   return (
     <StyledMainTemplete>
       <PostBoxTemplete>
         {posts.map((post, idx) => (
-          <PostCard key={idx} data={post} />
+          <Link to={`/profile/${post.user}`}>
+            <PostCard key={idx} data={post} />
+          </Link>
         ))}
-        <RequestMoreDataBar />
+        <RequestMoreDataBar handleBtn={handleBtn} />
       </PostBoxTemplete>
     </StyledMainTemplete>
   );

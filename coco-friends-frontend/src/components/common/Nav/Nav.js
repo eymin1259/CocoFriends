@@ -20,13 +20,13 @@ const NavBlock = styled.div`
   justify-content: space-between;
 `;
 
-const Nav = () => {
+const Nav = ({ photo, goToMyPage }) => {
   return (
     <StyledNav>
       <NavBlock>
         <NavLogoBox />
         <NavSearchBox />
-        <NavIconsBox />
+        <NavIconsBox photo={photo} goToMyPage={goToMyPage} />
       </NavBlock>
     </StyledNav>
   );

@@ -2,43 +2,24 @@ import React, { useEffect, useState } from 'react';
 import MainTemplete from '../../components/main/MainTemplete';
 import { getMainPosts } from '../../lib/api';
 
-const mock = [
-  {
-    userid: 1,
-    postid: 2,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 3,
-    postid: 4,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 5,
-    postid: 6,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 7,
-    postid: 8,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 9,
-    postid: 10,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-];
 const MainContainer = () => {
   const [posts, setPosts] = useState([]);
+  const [offset, setOffset] = useState(0);
+
+  const requestMoreData = () => {
+    setOffset(offset + 15);
+    getMainPosts(offset).then((res) => {
+      setPosts(posts.concat(res.data.mainPosts));
+    });
+  };
 
   useEffect(() => {
-    getMainPosts().then((res) => {
-      setPosts(res.data.mainPosts);
+    getMainPosts(offset).then((res) => {
+      setPosts(posts.concat(res.data.mainPosts));
     });
   }, []);
 
-  return <MainTemplete posts={posts} />;
+  return <MainTemplete posts={posts} handleBtn={requestMoreData} />;
 };
 
 export default MainContainer;

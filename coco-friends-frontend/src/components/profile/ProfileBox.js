@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import SyledButton from '../common/SyledButton';
 
 const StyledProfileBox = styled.div`
@@ -15,7 +15,12 @@ const ProfilePhoto = styled.div`
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQArUl8vgtwWjcZPNICGQEtzMuPQSC3ubReaVW6ebp2TiqXR5R6VEBWhtIDFiQa1x2AWXlGOqox4FVqEYY5lVokY_MUG3IE6EY&usqp=CAU&ec=45725304');
+  ${(props) =>
+    props.img &&
+    css`
+      background-image: url(${props.img});
+    `}
+
   background-size: 250px 250px;
 `;
 
@@ -41,16 +46,16 @@ const Profile = styled.div`
 `;
 
 const ProfileBox = ({ profile }) => {
-  const { name, sex, age, city, district, description } = profile;
+  const { name, photo, sex, age, city, district, description } = profile;
 
   return (
     <StyledProfileBox>
-      <ProfilePhoto />
+      <ProfilePhoto img={photo} />
       <ProfileSection>
         <Profile>
           <h2>{name}</h2>
           <p>
-            {sex} <b>{age}</b>
+            {sex === 1 ? '수컷' : '암컷'} <b>{age}살</b>
           </p>
           <p>
             {city} {district}

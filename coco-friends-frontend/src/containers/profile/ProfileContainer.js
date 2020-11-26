@@ -1,40 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileTemplete from '../../components/profile/ProfileTemplete';
+import * as api from '../../lib/api';
 
-const postmock = [
-  {
-    userid: 1,
-    postid: 2,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 3,
-    postid: 4,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 5,
-    postid: 6,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-  {
-    userid: 7,
-    postid: 8,
-    imgUrl: 'https://pbs.twimg.com/media/EVr9NmJVAAAovwr.jpg',
-  },
-];
+const ProfileContainer = ({ userId }) => {
+  const [profile, setProfile] = useState({
+    name: undefined,
+    sex: undefined,
+    age: undefined,
+    city: undefined,
+    district: undefined,
+    description: undefined,
+  });
 
-const profilemock = {
-  name: '삼색이',
-  sex: '수컷',
-  age: '6개월',
-  city: '서울특별시',
-  district: '노원구',
-  description:
-    '성격이 온화하고 산책을 좋아하는고양이 sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
-};
-const ProfileContainer = () => {
-  return <ProfileTemplete posts={postmock} profile={profilemock} />;
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    api.getUserInfo(userId).then((res) => {
+      setProfile({
+        name: res.data.userInfo.name,
+        photo: res.data.userInfo.photo,
+        sex: res.data.userInfo.sex,
+        age: res.data.userInfo.age,
+        city: res.data.userCity.name,
+        district: res.data.userDistrict.name,
+        description: res.data.userInfo.description,
+      });
+    });
+
+    api.getUserPosts(userId).then((res) => {
+      setPosts(res.data.userPosts);
+    });
+  }, [userId]);
+
+  return <ProfileTemplete posts={posts} profile={profile} />;
 };
 
 export default ProfileContainer;

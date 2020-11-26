@@ -10,7 +10,6 @@ const StyledPostCard = styled.div`
 `;
 
 const PostCard = ({ data }) => {
-  //console.log(data);
   return <StyledPostCard imgSrc={data.img} />;
 };
 

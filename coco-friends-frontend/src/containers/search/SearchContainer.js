@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchTemplete from '../../components/search/SearchTemplete';
 
 const searchRes = [
@@ -84,6 +84,11 @@ const searchRes = [
   },
 ];
 const SearchContainer = () => {
+  const [name, setName] = useState('');
+  const [sex, setSex] = useState(0);
+  const [city, setCity] = useState(null);
+  const [district, setDistrict] = useState(null);
+
   return <SearchTemplete results={searchRes} />;
 };
 
